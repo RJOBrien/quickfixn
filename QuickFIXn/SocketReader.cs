@@ -136,14 +136,19 @@ namespace QuickFix
             {
                 if (null == qfSession_)
                 {
-                    string adjustedMsg = msg;
+                    Message adjustedMsg = null;
 
                     if (socketSettings_.RjoGlobexAdapterTestMode)
                     {
                         this.Log("RjoGlobexAdapterTestMode: ignoring SenderSubID in sender's logon message");
                         // need to ignore client's SubID when looking up session
                         Regex rgx = new Regex($"{Message.SOH}50=[^{Message.SOH}]*");
-                        adjustedMsg = rgx.Replace(msg, "");
+                        string s = rgx.Replace(msg, "");
+                        adjustedMsg = new Message(s, false);
+                    }
+                    else
+                    {
+                        adjustedMsg = new Message(msg);
                     }
 
                     qfSession_ = Session.LookupSession(Message.GetReverseSessionID(adjustedMsg));
@@ -155,7 +160,7 @@ namespace QuickFix
                     }
                     else
                     {
-                        if (!HandleNewSession(adjustedMsg))
+                        if (!HandleNewSession(msg))
                             return;
                     }
                 }
