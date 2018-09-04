@@ -130,7 +130,7 @@ namespace QuickFix
 
         protected void OnMessageFoundInternal(string msg)
         {
-            ///Message fixMessage;
+            // Message fixMessage;
 
             try
             {
@@ -246,7 +246,7 @@ namespace QuickFix
                 return false;
             }
             qfSession_.Log.OnEvent(qfSession_.SessionID + " Socket Reader " + GetHashCode() + " accepting session " + qfSession_.SessionID + " from " + tcpClient_.Client.RemoteEndPoint);
-            /// FIXME do this here? qfSession_.HeartBtInt = QuickFix.Fields.Converters.IntConverter.Convert(message.GetField(Fields.Tags.HeartBtInt)); /// FIXME
+            // FIXME do this here? qfSession_.HeartBtInt = QuickFix.Fields.Converters.IntConverter.Convert(message.GetField(Fields.Tags.HeartBtInt)); /// FIXME
             qfSession_.Log.OnEvent(qfSession_.SessionID + " Acceptor heartbeat set to " + qfSession_.HeartBtInt + " seconds");
             qfSession_.SetResponder(responder_);
             return true;
@@ -269,7 +269,8 @@ namespace QuickFix
             if (realCause is IOException && realCause.InnerException is SocketException)
                 realCause = realCause.InnerException;
 
-            /** TODO
+            /*
+             TODO
             if(cause is FIXMessageDecoder.DecodeError && cause.InnerException != null)
                 realCause = cause.getCause();
             */
@@ -281,7 +282,8 @@ namespace QuickFix
                     reason = "Socket (" + tcpClient_.Client.RemoteEndPoint + "): " + cause.Message;
                 disconnectNeeded = true;
             }
-            /** TODO
+            /*
+             TODO
             else if(realCause is FIXMessageDecoder.CriticalDecodeError)
             {
                 reason = "Critical protocol codec error: " + cause;
