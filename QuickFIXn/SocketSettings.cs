@@ -96,7 +96,7 @@ namespace QuickFix
         public bool RequireClientCertificate { get; internal set; }
         #endregion
 
-        public bool RjoGlobexAdapterTestMode { get; internal set; }
+        public bool RjoAdapterTestMode { get; internal set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SocketSettings"/> class.
@@ -174,8 +174,8 @@ namespace QuickFix
                 }
             }
 
-            if (dictionary.Has(SessionSettings.RJO_GLOBEX_ADAPTER_TEST_MODE))
-                RjoGlobexAdapterTestMode = dictionary.GetBool(SessionSettings.RJO_GLOBEX_ADAPTER_TEST_MODE);
+            if (dictionary.Has(SessionSettings.RJO_ADAPTER_TEST_MODE))
+                RjoAdapterTestMode = dictionary.GetBool(SessionSettings.RJO_ADAPTER_TEST_MODE);
         }
 
         object ICloneable.Clone()

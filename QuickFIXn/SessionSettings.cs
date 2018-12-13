@@ -78,8 +78,8 @@ namespace QuickFix
         public const string SSL_REQUIRE_CLIENT_CERTIFICATE = "SSLRequireClientCertificate";
         public const string SSL_CA_CERTIFICATE = "SSLCACertificate";
 
-        // RJO hack for GlobexAdapter testing
-        public const string RJO_GLOBEX_ADAPTER_TEST_MODE = "RjoGlobexAdapterTestMode";
+        // RJO hack for Adapter testing
+        public const string RJO_ADAPTER_TEST_MODE = "RjoAdapterTestMode";
 
         #endregion
 

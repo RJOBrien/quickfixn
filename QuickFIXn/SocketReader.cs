@@ -138,12 +138,14 @@ namespace QuickFix
                 {
                     Message adjustedMsg = null;
 
-                    if (socketSettings_.RjoGlobexAdapterTestMode)
+                    if (socketSettings_.RjoAdapterTestMode)
                     {
-                        this.Log("RjoGlobexAdapterTestMode: ignoring SenderSubID in sender's logon message");
+                        this.Log("RjoAdapterTestMode: ignoring SenderSubID & SenderLocID in sender's logon message");
                         // need to ignore client's SubID when looking up session
                         Regex rgx = new Regex($"{Message.SOH}50=[^{Message.SOH}]*");
                         string s = rgx.Replace(msg, "");
+                        rgx = new Regex($"{Message.SOH}142=[^{Message.SOH}]*");
+                        s = rgx.Replace(msg, "");
                         adjustedMsg = new Message(s, false);
                     }
                     else
