@@ -145,7 +145,7 @@ namespace QuickFix
                         Regex rgx = new Regex($"{Message.SOH}50=[^{Message.SOH}]*");
                         string s = rgx.Replace(msg, "");
                         rgx = new Regex($"{Message.SOH}142=[^{Message.SOH}]*");
-                        s = rgx.Replace(msg, "");
+                        s = rgx.Replace(s, "");
                         adjustedMsg = new Message(s, false);
                     }
                     else
