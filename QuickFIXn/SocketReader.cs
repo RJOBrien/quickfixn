@@ -46,7 +46,7 @@ namespace QuickFix
         {
             try
             {
-                int bytesRead = ReadSome(readBuffer_, 1000);
+                int bytesRead = ReadSome(readBuffer_, 500);
                 if (bytesRead > 0)
                     parser_.AddToStream(System.Text.Encoding.UTF8.GetString(readBuffer_, 0, bytesRead));
                 else if (null != qfSession_)
