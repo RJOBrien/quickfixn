@@ -62,7 +62,7 @@ namespace QuickFix
             //    debugLogFilePath = settingsDict.GetString(SessionSettings.FILE_LOG_PATH);
 
             // FIXME - do something more flexible than hardcoding a filelog
-            if (string.IsNullOrEmpty(debugLogFilePath))
+            if (!string.IsNullOrEmpty(debugLogFilePath))
             {
                 this.log_ = new FileLog(debugLogFilePath, new SessionID("ClientHandlerThread", clientId.ToString(), "Debug"));
             }
