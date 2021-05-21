@@ -1227,7 +1227,7 @@ namespace QuickFix
             int beginSeqNum = state_.GetNextTargetMsgSeqNum();
             int endRangeSeqNum = msgSeqNum - 1;
             int endChunkSeqNum;
-            if (this.MaxMessagesInResendRequest > 0)
+            if (this.MaxMessagesInResendRequest > 0 && (msgSeqNum-1-beginSeqNum) > this.MaxMessagesInResendRequest)
             {
                 endChunkSeqNum = Math.Min(endRangeSeqNum, beginSeqNum + this.MaxMessagesInResendRequest - 1);
             }
